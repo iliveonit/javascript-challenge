@@ -5,6 +5,51 @@
 var tableData = data;
 var tbody = d3.select("tbody");
 
+// Getting a reference to the button on the page with the id property set to `click-me`
+var button = d3.select("#Enter");
+
+// Getting a reference to the input element on the page with the id property set to 'input-field'
+var inputField = d3.select("#Enter");
+
+// This function is triggered when the button is clicked
+function enterClick() {
+  // console.log("Hi, Welcome !!!");
+      data.forEach((tableData) => {
+       var row = tbody.append("tr");
+        Object.entries(tableData).forEach(([key, value]) => {
+       var cell = row.append("td");
+        cell.text(value);
+       });
+      });
+}
+
+// We can use the `on` function in d3 to attach an event to the handler function
+button.on("click", enterClick);
+
+// You can also define the click handler inline
+// button.on("Enter", function msg() {
+  // function msg() {
+  // console.log("Hi, Welcome !!!");
+  // console.log(d3.event.target);
+// };
+
+// const node = document.getElementsByClassName(".input")[0];
+// node.addEventListener("keyup", function(event) {
+//     if (event.key === "Enter") {
+//       // Build UFO data-table using Arrow Functions
+
+    //   data.forEach((tableData) => {
+    //   var row = tbody.append("tr");
+    //   Object.entries(tableData).forEach(([key, value]) => {
+    //   var cell = row.append("td");
+    //   cell.text(value);
+    //   });
+    // });
+
+    // Prevent the page from refreshing
+    // d3.event.preventDefault();
+//     }
+// });
 // =======================================================================================
 // // Console.log the weather data from data.js
 // console.log(tableData);
@@ -54,18 +99,7 @@ var tbody = d3.select("tbody");
 //   });
 // });
 // =======================================================================================
-// Build UFO data-table using Arrow Functions
 
-data.forEach((tableData) => {
-    var row = tbody.append("tr");
-    Object.entries(tableData).forEach(([key, value]) => {
-      var cell = row.append("td");
-      cell.text(value);
-    });
-  });
-
-// Prevent the page from refreshing
-  d3.event.preventDefault();
 
 // =======================================================================================
 // // Getting a reference to the button on the page with the id property set to `click-me`
